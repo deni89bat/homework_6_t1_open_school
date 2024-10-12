@@ -9,9 +9,11 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import tests.conditions.CustomElementConditions;
 
@@ -19,6 +21,8 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -26,7 +30,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.qameta.allure.Allure.addAttachment;
 import static tests.conditions.CustomElementConditions.*;
-
+@TestMethodOrder(OrderAnnotation.class)
 public class HomeWorkActionsTests {
     // Регистрация расширения для создания скриншотов
     @RegisterExtension
@@ -34,7 +38,9 @@ public class HomeWorkActionsTests {
 
     @BeforeAll
     public static void setup() {
+        Configuration.remote = "http://45.89.65.48:4444/wd/hub";
         Configuration.browser = "chrome";
+        Configuration.browserVersion = "125.0";
         Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
@@ -48,6 +54,7 @@ public class HomeWorkActionsTests {
 
     //Основные тестовые методы
     @Test
+    @Order(1)
     @DisplayName("Drag and Drop")
     @Description("""
             Перейти на страницу Drag and Drop.
@@ -65,6 +72,7 @@ public class HomeWorkActionsTests {
     }
 
     @Test
+    @Order(2)
     @DisplayName("Context menu")
     @Description("""
             Перейти на страницу Context menu.
@@ -79,6 +87,7 @@ public class HomeWorkActionsTests {
     }
 
     @Test
+    @Order(4)
     @DisplayName("Infinite Scroll")
     @Description("""
             Перейти на страницу Infinite Scroll.
@@ -91,6 +100,7 @@ public class HomeWorkActionsTests {
     }
 
     @Test
+    @Order(3)
     @DisplayName("Key Presses")
     @Description("""
             Перейти на страницу Key Presses.
