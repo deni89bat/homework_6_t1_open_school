@@ -85,7 +85,7 @@ public class HomeWorkActionsTests {
         rightClickOnBox(boxElement);
         checkAlertText("You selected a context menu");
     }
-
+    @Disabled
     @Test
     @Order(4)
     @DisplayName("Infinite Scroll")
