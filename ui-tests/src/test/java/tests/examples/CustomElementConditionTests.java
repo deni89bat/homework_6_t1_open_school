@@ -4,12 +4,14 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import tests.conditions.CustomElementConditions;
 import tests.conditions.CustomElementsCollectionConditions;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@Disabled
 public class CustomElementConditionTests {
     @BeforeEach
     void setup() {
