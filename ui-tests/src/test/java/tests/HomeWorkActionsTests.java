@@ -38,9 +38,9 @@ public class HomeWorkActionsTests {
 
     @BeforeAll
     public static void setup() {
-        Configuration.remote = "http://45.89.65.48:4444/wd/hub";
+        Configuration.remote = "http://193.239.160.56:4444/wd/hub";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "125.0";
+        Configuration.browserVersion = "128.0";
         Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
