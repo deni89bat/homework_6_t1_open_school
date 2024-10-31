@@ -14,6 +14,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.interactions.Actions;
 import tests.conditions.CustomElementConditions;
 
@@ -42,6 +43,11 @@ public class HomeWorkActionsTests {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "128.0";
         Configuration.pageLoadStrategy = "eager";
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.of("enableVNC", true));
+        Configuration.browserCapabilities = capabilities;
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true));
